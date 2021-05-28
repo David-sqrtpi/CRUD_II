@@ -1,10 +1,16 @@
 <form [formGroup]='personForm'>
-    Nombre:
-    <input type="text" formControlName='name'>
+    <p>
+        Nombre:
+        <input type="text" formControlName='name'>
+    </p>
+    <p>
+        Cédula de Ciudadanía:
+        <input type="number" formControlName='id'>
+    </p>
+    <p>
+        Fecha de nacimiento:
+        <input type="date" formControlName='birthdate'>
+    </p>
 
-    Cédula de Ciudadanía:
-    <input type="number" formControlName='id'>
 
-    Fecha de nacimiento:
-    <input type="date" formControlName='birthdate'>
 </form>

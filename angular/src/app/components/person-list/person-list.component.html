@@ -3,9 +3,9 @@
     <input matInput (keyup)="applyFilter($event)" [formControl]='filterInput'>
 </mat-form-field>
 
-<a mat-stroked-button color='primary' style="margin-left: 5.5%;" routerLink="/persons/add">Añadir persona</a>
+<a mat-stroked-button color='primary' style="margin-left: 5.5%;" (click)='openDialog({id:"", name:"", birthday: ""})'>Añadir persona</a>
 
-<table mat-table [dataSource]="persons" matSort class="mat-elevation-z8" style="width: 100%;" #table>
+<table mat-table [dataSource]="persons" matSort class="mat-elevation-z8" style="width: 100%;">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>

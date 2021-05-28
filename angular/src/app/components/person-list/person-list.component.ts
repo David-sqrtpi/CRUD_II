@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Person } from 'src/app/entity/person';
 
 import { PersonService } from 'src/app/services/person.service';
@@ -16,17 +14,14 @@ import { AddPersonComponent } from '../add-person/add-person.component';
 export class PersonListComponent implements OnInit {
 
   constructor(private personService: PersonService, public dialog: MatDialog) { }
-
-  @ViewChild(MatSort) sort: MatSort;
   filterInput = new FormControl('');
-  persons;
+  persons:Person[];
   displayedColumns: string[] = ['name', 'id', 'birthday', 'modify', 'delete'];
 
   ngOnInit(): void {
     this.personService.readAll().subscribe(
       persons => {
-        this.persons = new MatTableDataSource(persons);
-        this.persons.sort = this.sort;
+        this.persons = persons
       },
       err => console.error(err)
     );
@@ -40,7 +35,11 @@ export class PersonListComponent implements OnInit {
   openDialog(element: Person) {
     console.log('modify: ' + element);
     const dialogRef = this.dialog.open(AddPersonComponent, {
-      data: {id: element.id}
+      data: {
+        name: element.name,
+        id: element.id,
+        birthday: element.birthday
+      }
     });
 
     dialogRef.afterClosed().subscribe(

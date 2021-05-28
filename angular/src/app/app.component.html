@@ -1,16 +1,26 @@
-<form [formGroup]='personForm'>
+<form [formGroup]='personForm' (ngSubmit)='onSubmit()'>
     <p>
-        Nombre:
-        <input type="text" formControlName='name'>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input type="text" formControlName='name' matInput>
+            <mat-error>Campo obligatorio</mat-error>
+        </mat-form-field>
     </p>
     <p>
-        Cédula de Ciudadanía:
-        <input type="number" formControlName='id'>
+        <mat-form-field appearance="fill">
+            <mat-label>Cédula de Ciudadanía</mat-label>
+            <input type="number" formControlName='id' matInput>
+            <mat-error>Campo obligatorio</mat-error>
+        </mat-form-field>
     </p>
     <p>
-        Fecha de nacimiento:
-        <input type="date" formControlName='birthdate'>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName='birthdate'>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Campo obligatorio</mat-error>
+        </mat-form-field>
     </p>
-
-
+    <button mat-stroked-button color='primary' type="submit">Submit</button>
 </form>

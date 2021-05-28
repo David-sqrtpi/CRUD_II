@@ -12,16 +12,16 @@ export class AddPersonComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private personService: PersonService,
-    @Inject(MAT_DIALOG_DATA) public data: {id: number},
+    @Inject(MAT_DIALOG_DATA) public data: {id: number, name: string, birthday: Date},
     public dialogRef: MatDialogRef<AddPersonComponent>) { }
 
   ngOnInit(): void {
   }
 
   personForm = this.fb.group({
-    name: ['', Validators.required],
+    name: [this.data.name, Validators.required],
     id: [this.data.id, Validators.required],
-    birthday: ['', Validators.required]
+    birthday: [this.data.birthday, Validators.required]
   });
 
   onSubmit() {

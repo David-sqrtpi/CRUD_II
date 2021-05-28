@@ -25,7 +25,7 @@ public class PersonApi {
 
     @GetMapping("persons/{person}")
     public Person read(@PathVariable long person) {
-        return personService.read(personId);
+        return personService.read(person);
     }
 
     @PutMapping("persons")
@@ -35,6 +35,6 @@ public class PersonApi {
 
     @DeleteMapping("persons/{person}")
     public void delete(@PathVariable long person) {
-        personService.delete(personId);
+        personService.delete(person);
     }
 }

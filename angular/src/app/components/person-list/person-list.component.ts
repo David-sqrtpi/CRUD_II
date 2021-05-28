@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { Person } from 'src/app/entity/person';
 
 import { PersonService } from 'src/app/services/person.service';
@@ -18,7 +18,6 @@ export class PersonListComponent implements OnInit {
   constructor(private personService: PersonService, public dialog: MatDialog) { }
 
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('table') table;
   filterInput = new FormControl('');
   persons;
   displayedColumns: string[] = ['name', 'id', 'birthday', 'modify', 'delete'];
@@ -45,12 +44,8 @@ export class PersonListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(
-      () => this.table.renderRows()
+      () => location.reload()
     );
-    // this.personService.update(element).subscribe(
-    //   () => console.log('modified'),
-    //   err => ('Something went wrong ' + err)
-    // );
   }
 
   delete(element: Person) {
@@ -58,7 +53,7 @@ export class PersonListComponent implements OnInit {
     this.personService.delete(element.id).subscribe(
       () => {
         console.log('deleted');
-        this.table.renderRows();
+        location.reload();
       },
       err => ('Something went wrong ' + err)
     );

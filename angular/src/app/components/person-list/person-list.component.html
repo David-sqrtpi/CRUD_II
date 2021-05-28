@@ -3,7 +3,7 @@
     <input matInput (keyup)="applyFilter($event)" [formControl]='filterInput'>
 </mat-form-field>
 
-<button mat-stroked-button color='primary' style="margin-left: 5.5%;" routerLink='add'>Añadir persona</button>
+<a mat-stroked-button color='primary' style="margin-left: 5.5%;" routerLink="/persons/add">Añadir persona</a>
 
 <table mat-table [dataSource]="persons" matSort class="mat-elevation-z8" style="width: 100%;" #table>
     <!-- Name Column -->

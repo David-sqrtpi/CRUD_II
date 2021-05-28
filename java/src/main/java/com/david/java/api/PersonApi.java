@@ -1,7 +1,7 @@
 package com.david.java.api;
 
-import com.david.java.Person;
-import com.david.java.entity.services.PersonService;
+import com.david.java.entity.Person;
+import com.david.java.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ public class PersonApi {
     private PersonService personService;
 
     @PostMapping("persons")
-    public void create(Person person) {
+    public void create(@RequestBody Person person) {
         personService.create(person);
     }
 
@@ -29,7 +29,7 @@ public class PersonApi {
     }
 
     @PutMapping("persons")
-    public void update(Person person) {
+    public void update(@RequestBody Person person) {
         personService.update(person);
     }
 

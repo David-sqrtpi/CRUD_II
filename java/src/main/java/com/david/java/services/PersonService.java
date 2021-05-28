@@ -1,6 +1,6 @@
-package com.david.java.entity.services;
+package com.david.java.services;
 
-import com.david.java.Person;
+import com.david.java.entity.Person;
 import com.david.java.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

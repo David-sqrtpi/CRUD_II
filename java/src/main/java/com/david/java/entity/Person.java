@@ -1,4 +1,4 @@
-package com.david.java;
+package com.david.java.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

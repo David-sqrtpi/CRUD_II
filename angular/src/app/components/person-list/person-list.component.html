@@ -1,0 +1,45 @@
+<mat-form-field style="width: 75%;">
+    <mat-label> Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" [formControl]='filterInput'>
+</mat-form-field>
+
+<button mat-stroked-button color='primary' style="margin-left: 5.5%;" routerLink='add'>Añadir persona</button>
+
+<table mat-table [dataSource]="persons" matSort class="mat-elevation-z8" style="width: 100%;" #table>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cédula de Ciudadanía </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Birthday Column -->
+    <ng-container matColumnDef="birthday">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Nacimiento </th>
+        <td mat-cell *matCellDef="let element"> {{element.birthday}} </td>
+    </ng-container>
+
+    <!-- Modify Column -->
+    <ng-container matColumnDef="modify">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element" (click)='openDialog(element)'>
+            <mat-icon>edit</mat-icon>
+        </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+        <td mat-cell *matCellDef="let element" (click)='delete(element)'>
+            <mat-icon>delete</mat-icon>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
